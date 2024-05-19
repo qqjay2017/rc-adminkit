@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <div>loading</div>
+    <script type="text/javascript" src="./dist/sso.umd.cjs"></script>
+    <script>
+      const authing = TjSSo.LjSSoAuthing({
+        domain: "http://dev-pm.crccit.com:31006",
+        redirectUri: window.location.origin + "/sso.html",
+      });
+
+      authing.handleRedirectCallback().then(() => {
+        if (TjSSo.isMobileEnv()) {
+          TjSSo.loginSuccess({
+            access_token: sessionStorage.getItem("ACCESS_TOKEN"),
+            expires_in: sessionStorage.getItem("EXPIRES_IN"),
+            fp: sessionStorage.getItem("fp"),
+            pt: sessionStorage.getItem("pt"),
+            refresh_token: sessionStorage.getItem("REFRESH_TOKEN"),
+            user_info: sessionStorage.getItem("USER_INFO"),
+          });
+        } else {
+          // window.history.replaceState({}, "", window.location.origin);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+.ScrollAreaRoot {
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+.ScrollAreaViewport {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.ScrollAreaScrollbar {
+  display: flex;
+  /* ensures no selection */
+  user-select: none;
+  /* disable browser handling of all panning and zooming gestures on touch devices */
+  touch-action: none;
+  padding: 2px;
+  background: transparent;
+  z-index: 99;
+  // transition: background 160ms ease-out;
+}
+.ScrollAreaScrollbar:hover {
+  background: transparent;
+}
+.ScrollAreaScrollbar[data-orientation="vertical"] {
+  width: var(--scrollbar-size, 10px);
+}
+.ScrollAreaScrollbar[data-orientation="horizontal"] {
+  flex-direction: column;
+  height: var(--scrollbar-size, 10px);
+}
+
+.ScrollAreaThumb {
+  flex: 1;
+  background: var(--thumb-color, #d8d8d8);
+  border-radius: var(--scrollbar-size, 10px);
+  position: relative;
+}
+
+.ScrollAreaThumb::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  min-width: 44px;
+  min-height: 44px;
+}
