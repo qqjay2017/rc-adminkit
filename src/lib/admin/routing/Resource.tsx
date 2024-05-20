@@ -8,13 +8,13 @@ import { ResourceContextProvider } from '../context/ResourceContextProvider'
 import { RouteDataContextProvider } from './RouteDataContext'
 
 export function Resource(props: ResourceProps) {
-  const { create, edit, list, name, detail, more = [] } = props
+  const { create, edit, list, name, detail, more } = props
 
   return (
     <ResourceContextProvider value={name}>
       <Routes>
         {props.children}
-        {more.map((m, index) => (
+        {(more || []).map((m, index) => (
           <Route
             key={m.path + index}
             path={m.path}

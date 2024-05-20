@@ -24,7 +24,7 @@
     "lint:fix": "eslint src   --fix"
   },
   "dependencies": {
-    "@core/auth": "^0.2.4",
+    "@core/auth": "^0.2.6",
     "@radix-ui/react-scroll-area": "^1.0.5",
     "@types/uuid": "8",
     "axios": "^1.6.8",

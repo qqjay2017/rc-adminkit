@@ -1,18 +1,18 @@
-import { useNavigate } from 'react-router-dom'
-import { PageLayout } from './lib'
+import { PageLayout, useAuthProvider } from './lib'
 
 export function PostList() {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+  const { authing } = useAuthProvider()
 
   return (
     <PageLayout>
       <div className="  ">
         <div
           onClick={() => {
-            navigate('create')
+            authing.loginWithRedirect()
           }}
         >
-          到新建
+          去登录
         </div>
         <h1>111111fdf</h1>
         <h1>111111fdf</h1>

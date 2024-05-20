@@ -1,59 +1,64 @@
 import { Navigate, Route } from 'react-router-dom'
 
-import { Admin, CustomRoutes, PageLayout } from './lib'
+import { Admin, CustomRoutes, PageLayout, Resource } from './lib'
 
 import { Segments } from './Segments'
+import { PostList } from './PostList'
+
+function CreatePage() {
+  return <div>123</div>
+}
+
+function ListPage() {
+  return <div>123</div>
+}
+
+function DetailPage() {
+  return <div>123</div>
+}
+
+/**
+ *
+
+       domain="https://test-ymsl.kxgcc.com:30195"
+         envJsonParams={{}}
+ * @returns
+ */
 
 function App() {
   return (
     <Admin
-      // layout={({ children }) => {
-      //   return (
-      //     <div>
-      //       {children}
-      //       <h1>123</h1>
-      //     </div>
-      //   );
-      // }}
-
-      layout={({ children }) => {
-        return (
-          <div>
-            <div><h1>头部啊</h1></div>
-            { children}
-          </div>
-        )
-      }}
-      basename="/"
       domain="https://test-ymsl.kxgcc.com:30195"
+      basename="/"
       layoutProps={{
         getSidebarIsVisible(pageInfo) {
           console.log(pageInfo, 'pageInfo')
           return true
         },
-        getHeadIsVisible: () => {
+        getHeadIsVisible: (pageInfo) => {
+          console.log(pageInfo, 'pageInfo')
           return true
         },
       }}
       authingParams={{
         // 手动登录模式
         manual: true,
-        redirectUri: window.location.origin,
+        redirectUri: window.location.origin + window.location.pathname,
       }}
-
-      envJsonParams={{}}
-
     >
+
       <CustomRoutes noLayout>
-        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/" element={<Navigate to="/register" />} />
       </CustomRoutes>
 
       <CustomRoutes>
+
         <Route
           path="/register"
           element={(
             <PageLayout showBreadcrumb={false} label="注册啊">
               register
+              <PostList />
             </PageLayout>
           )}
         />
@@ -63,10 +68,6 @@ function App() {
             <div>123</div>
           )}
         />
-      </CustomRoutes>
-      {/* 自定义路由 */}
-      <CustomRoutes>
-        <Route path="/home" element={<Segments />} />
       </CustomRoutes>
     </Admin>
   )

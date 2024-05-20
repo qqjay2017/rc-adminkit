@@ -110,3 +110,24 @@ export function CoreAdminContext({
 
   )
 }
+
+export function CoreAdminContextA({
+  domain,
+  basename,
+
+  children,
+
+  authingParams,
+
+  websocketParams,
+}: ICoreAdminContextProps) {
+  return (
+
+    <StompContextProvider domain={websocketParams?.domain || domain || authingParams?.domain} {...websocketParams}>
+      <AdminRouter basename={basename}>
+        { children}
+      </AdminRouter>
+    </StompContextProvider>
+
+  )
+}

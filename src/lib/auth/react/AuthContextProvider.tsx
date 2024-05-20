@@ -41,11 +41,16 @@ export function AuthContextProvider({
   const [userInfoFromSession, setUserInfoFromSession] = useState(JSON.parse(sessionStorage.getItem('USER_INFO')||'{}'))
 
   useEffect(() => {
+  
     if(!authing){
       return 
     }
+    
     if (Authing.isRedirectCallback() || (!manual && !Authing.getLoginState())) {
+     
       authing.handleRedirectCallback().then((userInfo) => {
+        console.log(userInfo, 'userInfo')
+        debugger
         setIsLoading(!Authing.getLoginState())
         setAuthenticated(Authing.getLoginState())
         userInfo &&userInfo.id && setUserInfoFromSession(userInfo)
