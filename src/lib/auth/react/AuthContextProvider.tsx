@@ -30,7 +30,7 @@ export function AuthContextProvider({
     return new Authing({
       domain: location.origin,
       //   redirectUri: window.location.origin,
-      redirectUri: location.origin,
+      redirectUri: location.origin + location.pathname,
       PUBK: envJson?.PUBK,
       ...authingParams,
     })
@@ -49,8 +49,7 @@ export function AuthContextProvider({
     if (Authing.isRedirectCallback() || (!manual && !Authing.getLoginState())) {
      
       authing.handleRedirectCallback().then((userInfo) => {
-        console.log(userInfo, 'userInfo')
-        debugger
+       
         setIsLoading(!Authing.getLoginState())
         setAuthenticated(Authing.getLoginState())
         userInfo &&userInfo.id && setUserInfoFromSession(userInfo)

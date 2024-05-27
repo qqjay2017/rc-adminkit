@@ -1385,10 +1385,10 @@
     picocolors "^1.0.0"
     sisteransi "^1.0.5"
 
-"@core/auth@^0.2.6":
-  version "0.2.6"
-  resolved "http://bscs.d3ata.com:8081/repository/npm-g/@core/auth/-/auth-0.2.6.tgz#08d479a743459cb0459366faacec77f51a10d7df"
-  integrity sha512-d6t8euxWq+hMyBBg8wPOabxlPVzuNt87N8n+g5bgJ3Ul/BJJqVzVVsJoepAvwDCMRgHVwJRboGvQJC6xcO03dw==
+"@core/auth@^0.2.9":
+  version "0.2.9"
+  resolved "http://bscs.d3ata.com:8081/repository/npm-g/@core/auth/-/auth-0.2.9.tgz#a2812a248dd423d5ca7629b4d742aa884a1ba2bc"
+  integrity sha512-lzqqmLsN+jPgAQWWxDilRi57BN/qY7qcUjju99TmSCcJ01jeK8C4Xtah4UTrKe46TWhDGyuLg2/Sy97SztmDaQ==
   dependencies:
     axios "^1.6.8"
     crypto-js "^4.1.1"
